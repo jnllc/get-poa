@@ -15,7 +15,8 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on:
+      - kubernetes-dawg-a
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
