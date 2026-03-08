@@ -134,10 +134,12 @@
 
   /* Verb scrolling window — width set by JS to widest word */
   .verb-window {
-    height: 1.15em;
-    overflow: hidden;
+    height: 1.28em;
+    overflow-y: hidden;
+    overflow-x: visible;
     position: relative;
     text-align: right;
+    padding: 0 0.16em 0 0.12em;
   }
 
   .verb-scroller {
@@ -148,13 +150,14 @@
   }
 
   .verb-item {
-    height: 1.15em;
+    height: 1.28em;
     display: flex;
     align-items: center;
     justify-content: flex-end;
     flex-shrink: 0;
     color: var(--accent);
     white-space: nowrap;
+    line-height: 1.2;
   }
 
   /* Top/bottom fade on verb window */
@@ -163,7 +166,7 @@
     content: '';
     position: absolute;
     left: 0; right: 0;
-    height: 0.3em;
+    height: 0.2em;
     z-index: 2;
     pointer-events: none;
   }
@@ -412,6 +415,14 @@
     .hero-cta-group { flex-direction: column; width: 100%; }
     .btn-primary, .btn-ghost { width: 100%; text-align: center; }
   }
+
+  /* Desktop-only: extend left backstage to prevent clipping */
+  @media (min-width: 1000px) {
+    .phrase-row {
+      padding-left: 1000px;
+      margin-left: -1000px;
+    }
+  }
 </style>
 </head>
 <body>
@@ -578,7 +589,7 @@
       maxW = Math.max(maxW, item.scrollWidth);
     });
     // Add some breathing room
-    win.style.width = (maxW + 20) + 'px';
+    win.style.width = (maxW + 36) + 'px';
   }
 
   function goTo(index) {
