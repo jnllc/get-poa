@@ -16,6 +16,7 @@ concurrency:
 jobs:
   deploy:
     runs-on:
+      - self-hosted
       - kubernetes-dawg-a
     environment:
       name: github-pages
